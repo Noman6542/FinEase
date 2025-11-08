@@ -7,6 +7,7 @@ import { Link, NavLink, useNavigate } from "react-router";
 import { auth } from "../Firebase/Firebase.init";
 import Swal from "sweetalert2";
 import { AuthContext } from "../Provider/AuthProvider";
+import { CgProfile } from "react-icons/cg";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -166,6 +167,11 @@ const Navbar = () => {
               <p className="font-semibold">{user.displayName}</p>
               <p className="text-sm text-gray-600">{user.email}</p>
               <div className="mt-2 mb-2"><hr /></div>
+              <Link to={'/my-profile'} onClick={() => setDropdownOpen(false)} className="mt-2 w-full bg-red-500 hover:bg-red-600 text-white py-1 rounded flex justify-center items-center space-x-2 ">
+              <CgProfile  className="w-7 h-7"/>
+              <span>My-Profile</span>
+              
+              </Link>
               <button
                 onClick={handleLogout}
                 className="mt-2 w-full bg-red-500 hover:bg-red-600 text-white py-1 rounded"
