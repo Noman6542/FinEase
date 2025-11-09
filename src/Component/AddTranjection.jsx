@@ -30,7 +30,7 @@ const AddTransaction = () => {
       userName,
       createdAt: new Date(),
     };
-    console.log(newTransaction);
+    
     
 
     fetch("http://localhost:3000/finease-data", {
@@ -43,7 +43,7 @@ const AddTransaction = () => {
       .then((res) => res.json())
       .then((data) => {
         setLoading(false);
-        if (data.insertedId) {
+        if (data._id || data.insertedId) {
           toast.success("Transaction added successfully!");
           form.reset();
         }
