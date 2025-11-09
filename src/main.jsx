@@ -13,6 +13,7 @@ import ForgotPassword from './Pages/ForgotPassword.jsx';
 import MyProfile from './Pages/MyProfile.jsx';
 import PrivateRoute from './Private/PrivateRout.jsx';
 import AddTransactionPage from './Component/AddTranjection.jsx';
+import MyTransactions from './Component/MyTransactions.jsx';
 
 
 
@@ -51,6 +52,14 @@ const router = createBrowserRouter([
             <AddTransactionPage></AddTransactionPage>
           </PrivateRoute>
         ),
+      },
+      {
+        path:'/my-transaction',
+        element: (
+          <PrivateRoute>
+            <MyTransactions></MyTransactions>
+          </PrivateRoute>
+        )
       }
     ]
   },
