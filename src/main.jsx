@@ -16,6 +16,7 @@ import AddTransactionPage from './Component/AddTranjection.jsx';
 import MyTransactions from './Component/MyTransactions.jsx';
 import Details from './Pages/Details.jsx';
 import UpdateTransaction from './Pages/UpdateTransaction.jsx';
+import MyReport from './Component/MyReport.jsx';
 
 
 
@@ -79,6 +80,14 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
        
+      },
+      {
+        path:'/report',
+        element:(
+          <PrivateRoute>
+            <MyReport></MyReport>
+          </PrivateRoute>
+        )
       }
 
 
