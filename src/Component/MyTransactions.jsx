@@ -3,11 +3,13 @@ import { AuthContext } from "../Provider/AuthProvider";
 import { toast } from "react-toastify";
 import { PacmanLoader } from "react-spinners";
 import Swal from "sweetalert2";
+import { Link } from "react-router";
 
 const MyTransactions = () => {
   const { user, loading } = React.useContext(AuthContext);
   const [transactions, setTransactions] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  
 
   // Fetch logged-in user's transactions
   useEffect(() => {
@@ -74,24 +76,24 @@ const MyTransactions = () => {
               <p><strong>Date:</strong> {new Date(tx.date).toLocaleDateString()}</p>
 
               <div className="mt-4 flex gap-2">
-                <button
+                <Link to={`/transaction/${tx._id}`}
                   className="btn btn-sm btn-warning"
-                  onClick={() => toast.info("Update functionality coming soon!")}
+                  
                 >
                   Update
-                </button>
+                </Link>
                 <button
                   className="btn btn-sm btn-error"
                   onClick={() => handleDelete(tx._id)}
                 >
                   Delete
                 </button>
-                <button
+                <Link to={`/details/${tx._id}`}
                   className="btn btn-sm btn-primary"
-                  onClick={() => toast.info("View details coming soon!")}
+                  
                 >
                   View Details
-                </button>
+                </Link>
               </div>
             </div>
           ))}

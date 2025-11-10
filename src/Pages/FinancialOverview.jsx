@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { ClimbingBoxLoader } from "react-spinners";
 
 const FinancialOverview = () => {
   const [overview, setOverview] = useState(null); 
@@ -19,8 +20,9 @@ const FinancialOverview = () => {
   }, []);
 
   if (loading) {
-    return <p className="text-center">Loading overview...</p>;
-  }
+    return  <div className="flex justify-center items-center h-screen">
+        <ClimbingBoxLoader color="#5e5feb" size={20} />
+      </div>};
 
   return (
     <div className="max-w-4xl mx-auto my-10">

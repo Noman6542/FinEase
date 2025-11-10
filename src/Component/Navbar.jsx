@@ -21,7 +21,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="navbar bg-indigo-600 shadow-md sticky">
+    <div className="navbar bg-indigo-600 shadow-md sticky top-0 z-50">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -163,7 +163,7 @@ const Navbar = () => {
           />
 
           {dropdownOpen && (
-            <div className="absolute right-0 mt-2 w-48 bg-white shadow-lg rounded-lg p-3 z-50">
+            <div className="absolute right-0 mt-2 w-48 bg-white shadow-lg rounded-lg p-3"  style={{ zIndex: 999 }}>
               <p className="font-semibold">{user.displayName}</p>
               <p className="text-sm text-gray-600">{user.email}</p>
               <div className="mt-2 mb-2"><hr /></div>
