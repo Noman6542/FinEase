@@ -1,23 +1,29 @@
-import React, { useEffect, useState } from "react";
+import React, { use, useEffect, useState } from "react";
 import { ClimbingBoxLoader } from "react-spinners";
+import { AuthContext } from "../Provider/AuthProvider";
 
 const FinancialOverview = () => {
+  const {user}=use(AuthContext);
   const [overview, setOverview] = useState(null); 
   const [loading, setLoading] = useState(true); 
 
-  useEffect(() => {
-   
-    fetch("http://localhost:3000/overview")
-      .then(res => res.json())
-      .then(data => {
-        setOverview(data);
-        setLoading(false);
-      })
-      .catch(err => {
-        console.error("Failed to load data:", err);
-        setLoading(false);
-      });
-  }, []);
+   useEffect(() => {
+    if (user) { 
+      fetch("http://localhost:3000/overview")
+        .then(res => res.json())
+        .then(data => {
+          setOverview(data);
+          setLoading(false);
+        })
+        .catch(err => {
+          console.error("Failed to load data:", err);
+          setLoading(false);
+        });
+    } else {
+      setOverview(null);
+      setLoading(false);
+    }
+  }, [user]);
 
   if (loading) {
     return  <div className="flex justify-center items-center h-screen">
@@ -34,7 +40,7 @@ const FinancialOverview = () => {
         <div className="card bg-base-100 shadow-md p-6 text-center">
           <h3 className="text-lg font-semibold">Total Balance</h3>
           <p className="text-2xl font-bold text-green-600">
-            TK. {overview?.balance}
+            TK. {user && overview ? overview.balance : 0}
           </p>
         </div>
 
@@ -42,7 +48,7 @@ const FinancialOverview = () => {
         <div className="card bg-base-100 shadow-md p-6 text-center">
           <h3 className="text-lg font-semibold">Total Income</h3>
           <p className="text-2xl font-bold text-blue-600">
-            TK. {overview?.income}
+            TK. {user && overview ? overview.income : 0}
           </p>
         </div>
 
@@ -50,7 +56,7 @@ const FinancialOverview = () => {
         <div className="card bg-base-100 shadow-md p-6 text-center">
           <h3 className="text-lg font-semibold">Total Expense</h3>
           <p className="text-2xl font-bold text-red-600">
-            TK. {overview?.expense}
+            TK. {user && overview ? overview.expense : 0}
           </p>
         </div>
       </div>
