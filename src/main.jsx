@@ -9,7 +9,6 @@ import Login from './Pages/Login.jsx';
 import Register from './Pages/Register.jsx';
 import { ToastContainer } from 'react-toastify';
 import AuthProvider from './Provider/AuthProvider.jsx';
-import ForgotPassword from './Pages/ForgotPassword.jsx';
 import MyProfile from './Pages/MyProfile.jsx';
 import PrivateRoute from './Private/PrivateRout.jsx';
 import AddTransactionPage from './Component/AddTranjection.jsx';
@@ -42,10 +41,10 @@ const router = createBrowserRouter([
         path: "/register",
         Component: Register,
       },
-      {
-        path:'/forgot-password',
-        Component:ForgotPassword
-      },
+      // {
+      //   path:'/forgot-password',
+      //   Component:ForgotPassword
+      // },
       {
         path:'/my-profile',
         Component:MyProfile

@@ -72,7 +72,8 @@ const Login = () => {
               </span>
             </div>
             <div>
-              <Link to='/forgot-password' className="link link-hover">Forgot password?</Link>
+              {/* to='/forgot-password' */}
+              <p  className="link link-hover">Forgot password?</p>
             </div>
             <p>
               Don't have an account?
