@@ -15,11 +15,7 @@ const MyTransactions = () => {
   useEffect(() => {
     if (!user?.email) return;
 
-    fetch(`http://localhost:3000/finease-data?userEmail=${user.email}`,{
-      headers:{
-        authorization:`Bearer ${user.accessToken}`
-      }
-      })
+    fetch(`http://localhost:3000/finease-data?userEmail=${user.email}`)
       .then((res) => res.json())
       .then((data) => {
         setTransactions(data);
@@ -76,7 +72,7 @@ const MyTransactions = () => {
             <div key={tx._id} className="card bg-base-100 shadow-md p-4 rounded-xl">
               <h3 className="font-semibold text-lg mb-1">{tx.category}</h3>
               <p><strong>Type:</strong> {tx.type}</p>
-              <p><strong>Amount:</strong> ${tx.amount}</p>
+              <p><strong>Amount:</strong> TK {tx.amount}</p>
               <p><strong>Date:</strong> {new Date(tx.date).toLocaleDateString()}</p>
 
               <div className="mt-4 flex gap-2">

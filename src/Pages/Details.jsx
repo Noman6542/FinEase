@@ -13,23 +13,15 @@ const TransactionDetails = () => {
 
   useEffect(() => {
     if (!id) return;
-    fetch(`http://localhost:3000/transactions/${id}`,{
-      headers:{
-        authorization:`Bearer ${user.accessToken}`
-      }
-      })
+    fetch(`http://localhost:3000/transactions/${id}`)
       .then((res) => res.json())
       .then((data) => setTransaction(data))
       .catch((err) => console.error("Error fetching transaction:", err));
   }, [id,user]);
 
   useEffect(() => {
-    if (transaction?.category && user?.accessToken) {
-    fetch(`http://localhost:3000/transactions?category=${transaction.category}`, {
-      headers: {
-        authorization: `Bearer ${user.accessToken}` 
-      }
-    }) .then((res) => {
+    if (transaction?.category) {
+    fetch(`http://localhost:3000/transactions?category=${transaction.category}`) .then((res) => {
         if (!res.ok) throw new Error(`HTTP error! Status: ${res.status}`);
         return res.json();
       })

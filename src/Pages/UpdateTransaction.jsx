@@ -41,8 +41,7 @@ const UpdateTransaction = () => {
     e.preventDefault();
     fetch(`http://localhost:3000/transactions/${id}`, {
       method: "PUT",
-      headers: { "Content-Type": "application/json" ,
-       authorization:`Bearer ${user.accessToken}`
+      headers: { "Content-Type": "application/json"
       },
       body: JSON.stringify({
         ...formData,
