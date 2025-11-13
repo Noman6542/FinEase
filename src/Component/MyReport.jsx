@@ -13,7 +13,7 @@ const MyReport = () => {
   useEffect(() => {
     if (!user?.email) return;
 
-    fetch(`http://localhost:3000/finease-data?userEmail=${user.email}`)
+    fetch(`https://fin-ease-server-site.vercel.app/finease-data?userEmail=${user.email}`)
       .then((res) => res.json())
       .then((data) => {
         setTransactions(data);

@@ -9,7 +9,7 @@ const FinancialOverview = () => {
 
    useEffect(() => {
     if (user) { 
-      fetch("http://localhost:3000/overview")
+      fetch("https://fin-ease-server-site.vercel.app/overview")
         .then(res => res.json())
         .then(data => {
           setOverview(data);

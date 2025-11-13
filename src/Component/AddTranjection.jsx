@@ -33,7 +33,7 @@ const AddTransaction = () => {
     
     
 
-    fetch("http://localhost:3000/finease-data", {
+    fetch("https://fin-ease-server-site.vercel.app/finease-data", {
       method: "POST",
       headers: {
         "content-type": "application/json",

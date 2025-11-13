@@ -13,7 +13,7 @@ const TransactionDetails = () => {
 
   useEffect(() => {
     if (!id) return;
-    fetch(`http://localhost:3000/transactions/${id}`)
+    fetch(`https://fin-ease-server-site.vercel.app/transactions/${id}`)
       .then((res) => res.json())
       .then((data) => setTransaction(data))
       .catch((err) => console.error("Error fetching transaction:", err));
@@ -21,7 +21,7 @@ const TransactionDetails = () => {
 
   useEffect(() => {
     if (transaction?.category) {
-    fetch(`http://localhost:3000/transactions?category=${transaction.category}`) .then((res) => {
+    fetch(`https://fin-ease-server-site.vercel.app/transactions?category=${transaction.category}`) .then((res) => {
         if (!res.ok) throw new Error(`HTTP error! Status: ${res.status}`);
         return res.json();
       })

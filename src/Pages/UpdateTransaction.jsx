@@ -17,7 +17,7 @@ const UpdateTransaction = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/transactions/${id}`)
+    fetch(`https://fin-ease-server-site.vercel.app/transactions/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setFormData({
@@ -39,7 +39,7 @@ const UpdateTransaction = () => {
 
   const handleUpdate = (e) => {
     e.preventDefault();
-    fetch(`http://localhost:3000/transactions/${id}`, {
+    fetch(`https://fin-ease-server-site.vercel.app/transactions/${id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json"
       },
