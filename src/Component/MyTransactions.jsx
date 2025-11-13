@@ -11,10 +11,12 @@ const MyTransactions = () => {
   const [isLoading, setIsLoading] = useState(true);
   
 
+
   // Fetch logged-in user's transactions
   useEffect(() => {
     if (!user?.email) return;
-
+    
+    setIsLoading(true)
     fetch(`https://fin-ease-server-site.vercel.app/finease-data?userEmail=${user.email}`)
       .then((res) => res.json())
       .then((data) => {
