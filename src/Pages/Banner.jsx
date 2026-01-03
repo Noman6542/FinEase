@@ -7,7 +7,7 @@ const Banner = () => {
   const isAuthenticated = !!user && user.isAnonymous === false;
 
   return (
-    <section className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-14">
+    <section className="max-w-[1400px] mx-auto py-2">
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
