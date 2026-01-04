@@ -1,50 +1,129 @@
 import React from "react";
-import { FiAlertTriangle } from "react-icons/fi";
+import { motion } from "framer-motion";
+import {
+  FiTrendingUp,
+  FiAlertTriangle,
+  FiShield,
+  FiTarget,
+  FiClock,
+  FiDollarSign,
+  FiBarChart2,
+  FiCheckCircle,
+} from "react-icons/fi";
+
+const items = [
+  {
+    title: "Clear Financial Goals",
+    desc: "Helps define short and long-term goals with a structured financial roadmap.",
+    icon: <FiTarget />,
+    color: "bg-blue-100 text-blue-600",
+  },
+  {
+    title: "Emergency Readiness",
+    desc: "Prepares you for job loss, medical emergencies, or unexpected expenses.",
+    icon: <FiAlertTriangle />,
+    color: "bg-yellow-100 text-yellow-600",
+  },
+  {
+    title: "Smart Wealth Growth",
+    desc: "Ensures disciplined saving and investing for long-term wealth building.",
+    icon: <FiTrendingUp />,
+    color: "bg-green-100 text-green-600",
+  },
+  {
+    title: "Expense Control",
+    desc: "Keeps spending under control and avoids unnecessary financial leaks.",
+    icon: <FiDollarSign />,
+    color: "bg-purple-100 text-purple-600",
+  },
+  {
+    title: "Risk Protection",
+    desc: "Protects your finances against risks through planning and safeguards.",
+    icon: <FiShield />,
+    color: "bg-red-100 text-red-600",
+  },
+  {
+    title: "Time Optimization",
+    desc: "Saves time by automating savings and budgeting decisions efficiently.",
+    icon: <FiClock />,
+    color: "bg-indigo-100 text-indigo-600",
+  },
+  {
+    title: "Performance Tracking",
+    desc: "Tracks income, expenses, and progress using financial indicators.",
+    icon: <FiBarChart2 />,
+    color: "bg-teal-100 text-teal-600",
+  },
+  {
+    title: "Financial Confidence",
+    desc: "Builds confidence and peace of mind through better money decisions.",
+    icon: <FiCheckCircle />,
+    color: "bg-emerald-100 text-emerald-600",
+  },
+];
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 25 },
+  show: (i) => ({
+    opacity: 1,
+    y: 0,
+    transition: { delay: i * 0.08, duration: 0.45 },
+  }),
+};
 
 const FinancialPlanning = () => {
   return (
-    <div className="max-w-5xl mx-auto my-12 px-4">
-      <section>
-        <h2 className="text-2xl font-bold mb-8 text-center">
+    <section className="max-w-[1400px] mx-auto py-20 ">
+      {/* Heading */}
+      <motion.div
+        initial={{ opacity: 0, y: -15 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+        className="text-center mb-14"
+      >
+        <h2 className="text-3xl md:text-4xl font-bold mb-3">
           Why Financial Planning Matters
         </h2>
+        <p className="text-gray-500 max-w-2xl mx-auto">
+          Financial planning helps you stay prepared, grow wealth, and make
+          confident money decisions.
+        </p>
+      </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div className="card bg-base-100 shadow-md rounded-xl p-5 hover:shadow-lg transition-all duration-300">
-            <div className="flex items-center gap-3 mb-2">
-              <FiAlertTriangle className="text-yellow-500 text-xl" />
-              <h3 className="text-lg font-semibold">Roadmap to Goals</h3>
+      {/* Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        {items.map((item, index) => (
+          <motion.div
+            key={index}
+            custom={index}
+            variants={cardVariants}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            whileHover={{ y: -6 }}
+            className="bg-base-100 rounded-2xl p-6 shadow-md hover:shadow-xl transition-all duration-300"
+          >
+            {/* Icon */}
+            <div
+              className={`w-14 h-14 flex items-center justify-center rounded-xl mb-4 text-2xl ${item.color}`}
+            >
+              {item.icon}
             </div>
-            <p className="text-gray-600">
-              Financial planning provides a roadmap to your goals, whether it’s
-              buying a house or retiring early.
-            </p>
-          </div>
 
-          <div className="card bg-base-100 shadow-md rounded-xl p-5 hover:shadow-lg transition-all duration-300">
-            <div className="flex items-center gap-3 mb-2">
-              <FiAlertTriangle className="text-yellow-500 text-xl" />
-              <h3 className="text-lg font-semibold">Emergency Preparedness</h3>
-            </div>
-            <p className="text-gray-600">
-              It prepares you for emergencies like job loss, health issues, or
-              unexpected expenses.
-            </p>
-          </div>
+            {/* Title */}
+            <h3 className="text-lg font-semibold mb-2">
+              {item.title}
+            </h3>
 
-          <div className="card bg-base-100 shadow-md rounded-xl p-5 hover:shadow-lg transition-all duration-300">
-            <div className="flex items-center gap-3 mb-2">
-              <FiAlertTriangle className="text-yellow-500 text-xl" />
-              <h3 className="text-lg font-semibold">Maximize Wealth</h3>
-            </div>
-            <p className="text-gray-600">
-              Proper planning helps you maximize wealth over time through
-              disciplined saving and investment.
+            {/* Desc (2 lines only) */}
+            <p className="text-gray-600 text-sm leading-relaxed line-clamp-2">
+              {item.desc}
             </p>
-          </div>
-        </div>
-      </section>
-    </div>
+          </motion.div>
+        ))}
+      </div>
+    </section>
   );
 };
 

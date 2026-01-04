@@ -94,7 +94,7 @@ const FinancialOverview = () => {
   }, [user]);
 
   return (
-    <section className="max-w-[1400px] mx-auto">
+    <section className="max-w-[1400px] mx-auto py-16">
       {/* Heading */}
       <motion.h2
         initial={{ opacity: 0 }}

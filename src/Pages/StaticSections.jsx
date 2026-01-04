@@ -4,7 +4,7 @@ import FinancialPlanning from "./FinancialPlanning";
 
 const StaticSections = () => {
   return (
-    <div className="max-w-5xl mx-auto my-12 px-4">
+    <div className="max-w-[1400px] mx-auto">
       <section>
         <BudgetingTips></BudgetingTips>
         <FinancialPlanning></FinancialPlanning>
