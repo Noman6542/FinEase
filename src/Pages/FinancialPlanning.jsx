@@ -73,7 +73,7 @@ const cardVariants = {
 
 const FinancialPlanning = () => {
   return (
-    <section className="max-w-[1400px] mx-auto py-20 ">
+    <section className="max-w-[1400px] mx-auto pt-20 ">
       {/* Heading */}
       <motion.div
         initial={{ opacity: 0, y: -15 }}
